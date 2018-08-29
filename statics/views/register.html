@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>欢迎注册</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -40,19 +40,25 @@
     </div>
 </body>
 <script>
-  //获取用户注册信息;
-  function register(){
-       const username = $("usernameId").val();
-        const password = md5($("passwordId").val()+"/@#$");
-        $.post("/account/register",{username,password},function(res){
-            if(res){
-                console.log(res);
-                
-            }else{
-                console.log("注册失败");
+    //获取用户注册信息;
+    function register() {
+        const username = $("#usernameId").val();
+        const password = md5($("#passwordId").val() + "/@#$");
+        $.post("/account/register", {
+            username,
+            password
+        }, function (res) {
+            if (res.status == 0) {
+                alert(res.message)
+                location.href = "/account/loginpage";
+            } else {
+                alert(res.message)
             }
         })
-  }
- 
+    }
+
+//  $("document").keydown(function(e){ e =e||window.event; if(e.keyCode == 13){ register(); } }
+        
 </script>
+
 </html>

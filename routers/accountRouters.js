@@ -1,5 +1,4 @@
 const express = require("express");
-
 const path = require("path");
 const accountRouter = express.Router();
 //导入控制器;
@@ -12,9 +11,8 @@ accountRouter.get("/loginpage",accountCtrl.loginpage);
 accountRouter.get("/vcode",accountCtrl.vcode);
 //用户注册信息;
 accountRouter.post("/register",accountCtrl.register);
-
-
-
+//用户登陆信息;
+accountRouter.post("/login",accountCtrl.login);
 
 
 module.exports = accountRouter;
