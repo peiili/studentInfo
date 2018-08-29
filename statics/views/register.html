@@ -15,7 +15,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">用户注册</div>
                 <div class="panel-body">
-                    <form id="formId" class="form-horizontal">
+                    <form id="formId" class="form-horizontal" action="/app.js">
                         <div class="form-group">
                             <label for="uname" class="col-sm-2 control-label">用户名</label>
                             <div class="col-sm-10">
@@ -40,6 +40,19 @@
     </div>
 </body>
 <script>
-  
+  //获取用户注册信息;
+  function register(){
+       const username = $("usernameId").val();
+        const password = md5($("passwordId").val()+"/@#$");
+        $.post("/account/register",{username,password},function(res){
+            if(res){
+                console.log(res);
+                
+            }else{
+                console.log("注册失败");
+            }
+        })
+  }
+ 
 </script>
 </html>
