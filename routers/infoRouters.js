@@ -6,8 +6,4 @@ const path = require("path");
 const studentinfoCtrl = require(path.join(__dirname,"../controllers/studentinfoCtrl.js"));
 infoRouter.get('/studentinfo',studentinfoCtrl.studentInfopage);
 
-
-
-
-
 module.exports = infoRouter;

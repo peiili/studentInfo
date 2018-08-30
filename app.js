@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const xtemplate = require("xtemplate");
+const xtpl = require("xtpl");
 //2.创建服务;
 const app = express();
 

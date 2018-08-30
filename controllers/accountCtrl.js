@@ -108,8 +108,5 @@ exports.login = (req,res)=>{
                 });
 
         });
-      
-
     }
-   
 };
