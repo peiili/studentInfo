@@ -4,6 +4,9 @@
  */
 //导入数据操作包;
 const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require("mongodb").ObjectId;
+ // 导出
+exports.ObjectId = ObjectId;
 // 数据库地址;
 const url = 'mongodb://localhost:27017';
 // 根据数据库名称链接数据库;
@@ -107,3 +110,6 @@ exports.deleteOne = (params,collectionName,callback)=>{
         })
     })
 };
+
+
+exports.ObjectId = ObjectId;

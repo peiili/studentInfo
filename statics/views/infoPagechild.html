@@ -40,7 +40,7 @@
                         <td>{{this.sex}}</td>
                         <td>{{this.phone}}</td>
                         <td>
-                            <a href="#" class="btn btn-success">编辑</a> |
+                            <a href="/info/editstudentInfo/{{this._id}}" class="btn btn-success" >编辑</a> |
 
                             <input type="button" class="btn btn-danger" value="删除">
                         </td>
@@ -54,5 +54,7 @@
     function search(){
         window.location.href = `/info/studentinfo?keyword=${$("#studentNameId").val()}`
     }
+    //点击编辑的时候,数据将携带用户的id 发送到后台,根据id值进行修改数据;
+   
 </script>
 {{/block}}
