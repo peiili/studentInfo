@@ -13,6 +13,8 @@ accountRouter.get("/vcode",accountCtrl.vcode);
 accountRouter.post("/register",accountCtrl.register);
 //用户登陆信息;
 accountRouter.post("/login",accountCtrl.login);
+//验证用户是否登陆;
+// accountRouter.get("/checkLogin",accountCtrl.checkLogin);
 
 
 module.exports = accountRouter;

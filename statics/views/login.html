@@ -71,9 +71,9 @@
         const password = md5($("#passwordId").val() + "/@#$");
         const vcode = $("#vcodeId").val();
         $.post("/account/login",{
-            username,
-            password,
-            vcode,
+            username,//登陆账号
+            password,//登陆密码
+            vcode,//验证码
         },(res)=>{
             if(res.status == 0){
                location.href="/info/studentinfo";

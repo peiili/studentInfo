@@ -3,13 +3,11 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const xtemplate = require("xtemplate");
-const xtpl = require("xtpl");
 //2.创建服务;
 const app = express();
 
 //2.1接收页面post请求,app中使用了body的方法;
-// parse application/x-www-form-urlencoded
+// parse application/x-www-form-urlencoded-
 app.use(bodyParser.urlencoded({ extended: false }));
 //session中间件;
 app.use(session({ secret: 'keyboard cat',resave:false,//添加这行
