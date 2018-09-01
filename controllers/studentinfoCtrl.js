@@ -35,7 +35,6 @@ exports.insertData = (req, res) => {
     databasetools.insertData(req.body, "studentInfo", (err, res1) => {
         if (res1) {
             //有成功返回值,跳转到列表页面;
-            res.send(`<script>alert("新增成功")</script>`);
             res.send(`<script>window.location.href="/info/studentinfo"</script>`)
         } else {
             //增加失败,弹出失败窗口
@@ -55,4 +54,28 @@ exports.editstudentInfo = (req, res) => {
             res.send(content);
         })
     })
+}
+
+//提交修改学生信息;
+exports.edit = (req,res)=>{
+    databasetools.upData({_id:databasetools.ObjectId(req.params.studentId)},req.body,"studentInfo",(err,reslute)=>{
+        if(reslute){
+            res.send(`<script>location.href="/info/studentinfo";</script>`);
+        }else{
+            res.send(`<script>alert("新增失败")</script>`);
+        }
+    })  
+}
+
+//删除学生信息;
+exports.del = (req,res)=>{
+    databasetools.deleteOne({_id:databasetools.ObjectId(req.params.studentId)},"studentInfo",(err,reslute)=>{
+        if(reslute == null){
+            res.send(`<script>alert("删除失败")</script>`);
+   
+        }else{
+            res.send(`<script>location.href="/info/studentinfo";</script>`);
+
+        }
+    })  
 }

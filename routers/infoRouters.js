@@ -9,6 +9,9 @@ infoRouter.get('/addstudentinfo',studentinfoCtrl.addStudent);
 infoRouter.post('/addsaveInfo',studentinfoCtrl.insertData);
 //动态添加参数.在路径后面添加  " : "和参数的名;
 infoRouter.get('/editstudentInfo/:studentId',studentinfoCtrl.editstudentInfo);
-
+//提交学生信息修改数据;
+infoRouter.post('/edit/:studentId',studentinfoCtrl.edit);
+//删除学生信息;
+infoRouter.get('/del/:studentId',studentinfoCtrl.del);
 //将各种方法暴露出去;
 module.exports = infoRouter;

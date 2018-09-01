@@ -67,9 +67,9 @@ exports.insertData = (params,collectionName,callback)=>{
         const db = client.db(dbName);
         const collection = db.collection(collectionName);
         //使用增加数据的方法;
-        collection.insertOne(params,(err,res)=>{
+        collection.insertOne(params,(err,res2)=>{
             client.close();
-            callback(err,res)
+            callback(err,res2);
         })
     })
 }
@@ -78,36 +78,37 @@ exports.insertData = (params,collectionName,callback)=>{
  * 暴露给控制器用的，查询列表的方法
  * @param {*} params 数据参数;
  * @param {*} collectionName 集合名称
+ * @param {*} condition id条件
  * @param {*} callback 回调函数
  */
-exports.updataData = (params,collectionName,callback)=>{
+exports.upData = (condition,params,collectionName,callback)=>{
     MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
         const db = client.db(dbName);
         const collection = db.collection(collectionName);
-        //使用增加数据的方法;
-        collection.insertOne(params,(err,res)=>{
+        collection.updateOne(condition,{ $set:params },(err, result)=> {
             client.close();
-            callback(err,res)
-        })
+            callback(err,result)
+          });  
+        
     })
 };
 
 /**
  * 删除学生信息列表工具;
  * 暴露给控制器用的，查询列表的方法
- * @param {*} params 数据参数;
- * @param {*} collectionName 集合名称
+ * @param {*} condition 删除条件名称
+ * @param {*} collectionName 数据库名称
  * @param {*} callback 回调函数
  */
-exports.deleteOne = (params,collectionName,callback)=>{
+exports.deleteOne = (condition,collectionName,callback)=>{
     MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
         const db = client.db(dbName);
         const collection = db.collection(collectionName);
-        //使用增加数据的方法;
-        collection.insertOne(params,(err,res)=>{
+        //删除数据的方法;
+        collection.deleteOne(condition, function(err, result) {
             client.close();
-            callback(err,res)
-        })
+            callback(err,result);
+          });    
     })
 };
 
