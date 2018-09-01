@@ -12,7 +12,7 @@ exports.studentInfopage = (req, res) => {
             //获取数据库中的列表信息;查询数据库;
             students: docs,
             keywordVal: keyword,
-            user: "hehe"
+            user: req.session.username,
         }, function (err, content) {
             //通过模板将内容渲染到浏览器;
             res.send(content)
@@ -23,7 +23,7 @@ exports.studentInfopage = (req, res) => {
 //返回用户请求的新增学生信息的请求;
 exports.addStudent = (req, res) => {
     xtpl.renderFile(path.join(__dirname, "../statics/views/addStudent.html"), {
-        user: "heheh"
+        user: req.session.username,
     }, (err, content) => {
         res.send(content);
     });
@@ -72,10 +72,15 @@ exports.del = (req,res)=>{
     databasetools.deleteOne({_id:databasetools.ObjectId(req.params.studentId)},"studentInfo",(err,reslute)=>{
         if(reslute == null){
             res.send(`<script>alert("删除失败")</script>`);
-   
+   username
         }else{
             res.send(`<script>location.href="/info/studentinfo";</script>`);
 
         }
     })  
+}
+
+//退出登陆
+exports.logout =(req,res)=>{
+    req.session.name = null;
 }

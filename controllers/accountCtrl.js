@@ -80,15 +80,9 @@ exports.login = (req, res) => {
                 result.checkLogin = 0;
                 res.json(result);
             } else {
+                req.session.username = req.body.username;
                 res.json(result);
             }
         })
     }
 };
-
-//验证是否登陆
-// exports.checkLogin = (req,res)=>{
-// console.log(req.session.vode);
-
-//     res.send(req.session.checkLogin)
-// }

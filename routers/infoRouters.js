@@ -13,5 +13,7 @@ infoRouter.get('/editstudentInfo/:studentId',studentinfoCtrl.editstudentInfo);
 infoRouter.post('/edit/:studentId',studentinfoCtrl.edit);
 //删除学生信息;
 infoRouter.get('/del/:studentId',studentinfoCtrl.del);
+//退出登陆;
+infoRouter.get('/logout',studentinfoCtrl.logout);
 //将各种方法暴露出去;
 module.exports = infoRouter;
